@@ -45,12 +45,12 @@ function Hermite() {
 
     let result1 = Vector4.Hermite(v1, t1, v2, t2, a);
     let expected = new Vector4(39.0311, 34.65557, -132.5473, -2626.85938);
-    assert.IsTrue(expected.Equals(result1), `${expected.ToString()}\r\n${result1.ToString()}`);
+    assert.AreEqual(expected, result1);
 
     // same as result1 ? - it must be same
 
     let result2 = Vector4.Hermite(v1, t1, v2, t2, a);
-    assert.IsTrue(result1.Equals(result2), `${result1.ToString()}\r\n${result2.ToString()}`);
+    assert.AreEqual(result1, result2);
 }
 
 function Length() {

@@ -105,7 +105,6 @@ function Normalize() {
 }
 
 export default function () {
-    debugger;
     Constructors();
     Properties();
     Add();

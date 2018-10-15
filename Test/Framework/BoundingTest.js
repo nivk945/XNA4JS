@@ -62,7 +62,7 @@ function BoundingSphereTests() {
     try {
         BoundingSphere.CreateFromPoints([]);
     } catch (e) {
-        console.error('报错测试\r\n' + e);
+        console.error('报错测试成功（这不是真的错误）\r\n' + e);
         assert.Pass();
     }
 }

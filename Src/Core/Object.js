@@ -20,6 +20,9 @@ class Object extends IPrivateVar {
         ).call(this, ...args);
     }
 
+    toString(...args) {
+        return this.ToString(...args);
+    }
 
     toJSON(...args) {
         return (
@@ -82,7 +85,11 @@ class Object extends IPrivateVar {
         return (
             Object.prototype.GetHashCode = Overload.Create().
                 Add([], function () {
-                    let str = JSON.stringify(this);
+                    let obj = {};
+                    for (const p of window.Object.getOwnPropertyNames(this)) {
+                        obj[p] = this[p];
+                    }
+                    let str = JSON.stringify(obj);
                     let h = 0;
                     let len = str.length;
                     let t = 2147483648;

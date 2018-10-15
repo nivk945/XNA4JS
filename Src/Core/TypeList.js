@@ -103,8 +103,8 @@ class TypeList extends Object {
 
     Add(...args) {
         return (
-            TypeList.prototype.Add = Overload.Create().
-                Add(['*'], function (item) {
+            Overload.Create().
+                Add([this._getPrivateVar('_type')], function (item) {
                     let list = this._getPrivateVar('_list');
                     list.push(item);
                 })
@@ -117,7 +117,7 @@ class TypeList extends Object {
                 Add([Array], function (arr) {
                     let list = this._getPrivateVar('_list');
                     arr.map((value, index) => {
-                        list.push(value);
+                        this.Add(value);
                     });
                 })
         ).call(this, ...args);
@@ -144,8 +144,8 @@ class TypeList extends Object {
 
     Contains(...args) {
         return (
-            TypeList.prototype.Contains = Overload.Create().
-                Add(['*'], function (value) {
+            Overload.Create().
+                Add([this._getPrivateVar('_type')], function (value) {
                     return this.IndexOf(value) >= 0;
                 })
         ).call(this, ...args);
@@ -153,8 +153,8 @@ class TypeList extends Object {
 
     IndexOf(...args) {
         return (
-            TypeList.prototype.IndexOf = Overload.Create().
-                Add(['*'], function (value) {
+            Overload.Create().
+                Add([this._getPrivateVar('_type')], function (value) {
                     let list = this._getPrivateVar('_list');
                     for (let i = list.length; i--;) {
                         if (list[i].Equals(value)) return i;
@@ -166,8 +166,8 @@ class TypeList extends Object {
 
     Insert(...args) {
         return (
-            TypeList.prototype.Insert = Overload.Create().
-                Add([Number, '*'], function (index, value) {
+            Overload.Create().
+                Add([Number, this._getPrivateVar('_type')], function (index, value) {
                     let list = this._getPrivateVar('_list');
                     if (index > list.length) index = list.length;
                     if (index < -list.length) index = 0;
@@ -182,8 +182,8 @@ class TypeList extends Object {
 
     Remove(...args) {
         return (
-            TypeList.prototype.Remove = Overload.Create().
-                Add(['*'], function (value) {
+            Overload.Create().
+                Add([this._getPrivateVar('_type')], function (value) {
                     let list = this._getPrivateVar('_list');
                     for (let i = list.length; i--;) {
                         if (list[i] === value) {
