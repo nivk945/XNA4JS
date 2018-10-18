@@ -9,8 +9,8 @@ export default function () {
 
     let obj2 = new Object();
     obj2.abc = 456;
-
-    assert.AreEqual(obj1.ToString(), 'Object', '基础函数测试：ToString');
+    
+    assert.AreEqual(obj1.ToString(), '[object Object]', '基础函数测试：ToString');
 
     assert.IsTrue(obj1.GetType() == Object, '基础函数测试：GetType');
 

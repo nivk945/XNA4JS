@@ -46,11 +46,7 @@ class BoundingBox extends Object {
             })
         )).call(this, ...args);
     }
-
-    static get [Symbol.name]() {
-        return 'BoundingBox';
-    }
-
+    
     static get CornerCount() {
         return 8;
     }
@@ -398,23 +394,34 @@ class BoundingBox extends Object {
         ).call(this, ...args);
     }
 
-    toJSON() {
-        return super.toJSON({
-            Min: this.Min,
-            Max: this.Max
-        });
+    Serialize(...args) {
+        let superSerialize = super.Serialize;
+        return (
+            BoundingBox.prototype.Serialize = Overload.Create().
+                Add([String], function () {
+                    return superSerialize.call(this, {
+                        Min: this.Min,
+                        Max: this.Max
+                    });
+                })
+        ).call(this, ...args);
     }
 
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (obj['Symbol'] !== BoundingBox[Symbol.name]) {
-            throw new TypeError('Unrecognized type');
-        }
-        let min = Vector3.fromJSON(obj.Min);
-        let max = Vector3.fromJSON(obj.Max);
-        return new BoundingBox(min, max);
+    static Deserialize(...args) {
+        return (
+            BoundingBox.Deserialize = Overload.Create().
+                Add([String], function (str) {
+                    return this.Deserialize(JSON.parse(str));
+                }).
+                Add([window.Object], function (obj) {
+                    if (obj['Symbol'] !== BoundingBox.name) {
+                        throw new TypeError('Unrecognized type');
+                    }
+                    let min = Vector3.Deserialize(obj.Min);
+                    let max = Vector3.Deserialize(obj.Max);
+                    return new BoundingBox(min, max);
+                })
+        ).call(this, ...args);
     }
 }
 

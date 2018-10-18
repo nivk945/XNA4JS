@@ -6,11 +6,7 @@ class CurveKeyCollection extends TypeList {
     constructor(...args) {
         super(CurveKey, ...args);
     }
-
-    static get [Symbol.name]() {
-        return 'CurveKeyCollection';
-    }
-
+    
     Add(...args) {
         const superAdd = super.Add;
         return (
@@ -96,18 +92,23 @@ class CurveKeyCollection extends TypeList {
                 })
         ).call(this, ...args);
     }
-
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (!Array.isArray(obj)) {
-            throw new TypeError('Unrecognized type');
-        }
-        for (let i = 0; i < obj.length; i++) {
-            obj[i] = CurveKey.fromJSON(obj[i]);
-        }
-        return new CurveKeyCollection(obj);
+    
+    static Deserialize(...args) {
+        return (
+            CurveKeyCollection.Deserialize = Overload.Create().
+                Add([String], function (str) {
+                    return this.Deserialize(JSON.parse(str));
+                }).
+                Add([window.Object], function (obj) {
+                    if (!Array.isArray(obj)) {
+                        throw new TypeError('Unrecognized type');
+                    }
+                    for (let i = 0; i < obj.length; i++) {
+                        obj[i] = CurveKey.Deserialize(obj[i]);
+                    }
+                    return new CurveKeyCollection(obj);
+                })
+        ).call(this, ...args);
     }
 }
 

@@ -48,10 +48,6 @@ class BoundingSphere extends Object {
         )).call(this, ...args);
     }
 
-    static get [Symbol.name]() {
-        return 'BoundingSphere';
-    }
-
     Contains(...args) {
         return (
             BoundingSphere.prototype.Contains = Overload.Create().
@@ -328,22 +324,33 @@ class BoundingSphere extends Object {
         ).call(this, ...args);
     }
 
-    toJSON() {
-        return super.toJSON({
-            Center: this.Center,
-            Radius: this.Radius
-        });
+    Serialize(...args) {
+        let superSerialize = super.Serialize;
+        return (
+            BoundingSphere.prototype.Serialize = Overload.Create().
+                Add([String], function () {
+                    return superSerialize.call(this, {
+                        Center: this.Center,
+                        Radius: this.Radius
+                    });
+                })
+        ).call(this, ...args);
     }
 
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (obj['Symbol'] !== BoundingSphere[Symbol.name]) {
-            throw new TypeError('Unrecognized type');
-        }
-        let center = Vector3.fromJSON(obj.Center);
-        return new BoundingSphere(center, obj.Radius);
+    static Deserialize(...args) {
+        return (
+            BoundingSphere.Deserialize = Overload.Create().
+                Add([String], function (str) {
+                    return this.Deserialize(JSON.parse(str));
+                }).
+                Add([window.Object], function (obj) {
+                    if (obj['Symbol'] !== BoundingSphere.name) {
+                        throw new TypeError('Unrecognized type');
+                    }
+                    let center = Vector3.Deserialize(obj.Center);
+                    return new BoundingSphere(center, obj.Radius);
+                })
+        ).call(this, ...args);
     }
 }
 

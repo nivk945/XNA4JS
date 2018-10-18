@@ -70,10 +70,6 @@ class Curve extends Object {
         )).call(this, ...args);
     }
 
-    static get [Symbol.name]() {
-        return 'Curve';
-    }
-
     get IsConstant() {
         return this._getPrivateVar('_keys').Length <= 1;
     }
@@ -247,29 +243,40 @@ class Curve extends Object {
         ).call(this, ...args);
     }
 
-    toJSON() {
-        return super.toJSON({
-            PreLoop: this.PreLoop,
-            PostLoop: this.PostLoop,
-            _keys: this.Keys
-        });
+    Serialize(...args) {
+        let superSerialize = super.Serialize;
+        return (
+            Curve.prototype.Serialize = Overload.Create().
+                Add([String], function () {
+                    return superSerialize.call(this, {
+                        PreLoop: this.PreLoop,
+                        PostLoop: this.PostLoop,
+                        _keys: this.Keys
+                    });
+                })
+        ).call(this, ...args);
     }
 
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (obj['Symbol'] !== Curve[Symbol.name]) {
-            throw new TypeError('Unrecognized type');
-        }
-        let preLoop = CurveLoopType.fromJSON(obj.PreLoop);
-        let postLoop = CurveLoopType.fromJSON(obj.PostLoop);
-        let _keys = CurveKeyCollection.fromJSON(obj._keys);
-        let curve = new Curve();
-        curve.PreLoop = preLoop;
-        curve.PostLoop = postLoop;
-        curve._setPrivateVar('_keys', _keys);
-        return curve;
+    static Deserialize(...args) {
+        return (
+            Curve.Deserialize = Overload.Create().
+                Add([String], function (str) {
+                    return this.Deserialize(JSON.parse(str));
+                }).
+                Add([window.Object], function (obj) {
+                    if (obj['Symbol'] !== Curve.name) {
+                        throw new TypeError('Unrecognized type');
+                    }
+                    let preLoop = CurveLoopType.Deserialize(obj.PreLoop);
+                    let postLoop = CurveLoopType.Deserialize(obj.PostLoop);
+                    let _keys = CurveKeyCollection.Deserialize(obj._keys);
+                    let curve = new Curve();
+                    curve.PreLoop = preLoop;
+                    curve.PostLoop = postLoop;
+                    curve._setPrivateVar('_keys', _keys);
+                    return curve;
+                })
+        ).call(this, ...args);
     }
 }
 

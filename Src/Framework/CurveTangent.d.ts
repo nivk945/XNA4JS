@@ -1,12 +1,12 @@
-﻿import Object from "../Core/Object.js";
+﻿import Enum from "../Core/Enum.js";
 
 /**
  * 指定要为 Curve 中的 CurveKey 点计算的不同切线类型。
  * @public
  * @enum
- * @extends Object
+ * @extends Enum
  */
-class CurveTangent extends Object {
+class CurveTangent extends Enum {
     /**
      * Flat 切线始终具有一个零值。
      */

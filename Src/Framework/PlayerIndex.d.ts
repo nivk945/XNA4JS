@@ -1,12 +1,12 @@
-﻿import Object from "../Core/Object.js";
+﻿import Enum from "../Core/Enum.js";
 
 /**
  * 指定与玩家相关联的游戏控制器。
  * @public
  * @enum
- * @extends Object
+ * @extends Enum
  */
-class PlayerIndex extends Object {
+class PlayerIndex extends Enum {
     /**
      * 第一个控制器。
      * @returns {PlayerIndex}

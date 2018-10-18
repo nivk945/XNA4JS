@@ -63,11 +63,7 @@ class Vector3 extends Object {
             })
         )).call(this, ...args);
     }
-
-    static get [Symbol.name]() {
-        return 'Vector3';
-    }
-
+    
     static get One() {
         return new Vector3(1, 1, 1);
     }
@@ -524,23 +520,34 @@ class Vector3 extends Object {
                 })
         ).call(this, ...args);
     }
-
-    toJSON() {
-        return super.toJSON({
-            X: this.X,
-            Y: this.Y,
-            Z: this.Z
-        });
+    
+    Serialize(...args) {
+        let superSerialize = super.Serialize;
+        return (
+            Vector3.prototype.Serialize = Overload.Create().
+                Add([String], function () {
+                    return superSerialize.call(this, {
+                        X: this.X,
+                        Y: this.Y,
+                        Z: this.Z
+                    });
+                })
+        ).call(this, ...args);
     }
 
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (obj['Symbol'] !== Vector3[Symbol.name]) {
-            throw new TypeError('Unrecognized type');
-        }
-        return new Vector3(obj.X, obj.Y, obj.Z);
+    static Deserialize(...args) {
+        return (
+            Vector3.Deserialize = Overload.Create().
+                Add([String], function (str) {
+                    return this.Deserialize(JSON.parse(str));
+                }).
+                Add([window.Object], function (obj) {
+                    if (obj['Symbol'] !== Vector3.name) {
+                        throw new TypeError('Unrecognized type');
+                    }
+                    return new Vector3(obj.X, obj.Y, obj.Z);
+                })
+        ).call(this, ...args);
     }
 }
 

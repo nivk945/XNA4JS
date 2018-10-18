@@ -70,11 +70,7 @@ class Rectangle extends Object {
             })
         )).call(this, ...args);
     }
-
-    static get [Symbol.name]() {
-        return 'Rectangle';
-    }
-
+    
     get Bottom() {
         return this.Y + this.Height;
     }
@@ -233,24 +229,35 @@ class Rectangle extends Object {
                 })
         ).call(this, ...args);
     }
-
-    toJSON() {
-        return super.toJSON({
-            X: this.X,
-            Y: this.Y,
-            Width: this.Width,
-            Height: this.Height
-        });
+    
+    Serialize(...args) {
+        let superSerialize = super.Serialize;
+        return (
+            Rectangle.prototype.Serialize = Overload.Create().
+                Add([String], function () {
+                    return superSerialize.call(this, {
+                        X: this.X,
+                        Y: this.Y,
+                        Width: this.Width,
+                        Height: this.Height
+                    });
+                })
+        ).call(this, ...args);
     }
 
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (obj['Symbol'] !== Rectangle[Symbol.name]) {
-            throw new TypeError('Unrecognized type');
-        }
-        return new Rectangle(obj.X, obj.Y, obj.Width, obj.Height);
+    static Deserialize(...args) {
+        return (
+            Rectangle.Deserialize = Overload.Create().
+                Add([String], function (str) {
+                    return this.Deserialize(JSON.parse(str));
+                }).
+                Add([window.Object], function (obj) {
+                    if (obj['Symbol'] !== Rectangle.name) {
+                        throw new TypeError('Unrecognized type');
+                    }
+                    return new Rectangle(obj.X, obj.Y, obj.Width, obj.Height);
+                })
+        ).call(this, ...args);
     }
 }
 

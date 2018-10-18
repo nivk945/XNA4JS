@@ -16,16 +16,6 @@ class DisplayOrientation extends Enum {
     static get Portrait() {
         return PORTRAIT;
     }
-
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (!DisplayOrientation[obj['_enum']]) {
-            throw new TypeError('Unrecognized type');
-        }
-        return DisplayOrientation[obj['_enum']];
-    }
 }
 
 const DEFAULT = new DisplayOrientation('Default');

@@ -46,11 +46,7 @@ class Vector2 extends Object {
             })
         )).call(this, ...args);
     }
-
-    static get [Symbol.name]() {
-        return 'Vector2';
-    }
-
+    
     static get One() {
         return new Vector2(1, 1);
     }
@@ -438,22 +434,33 @@ class Vector2 extends Object {
                 })
         ).call(this, ...args);
     }
-
-    toJSON() {
-        return super.toJSON({
-            X: this.X,
-            Y: this.Y
-        });
+    
+    Serialize(...args) {
+        let superSerialize = super.Serialize;
+        return (
+            Vector2.prototype.Serialize = Overload.Create().
+                Add([String], function () {
+                    return superSerialize.call(this, {
+                        X: this.X,
+                        Y: this.Y
+                    });
+                })
+        ).call(this, ...args);
     }
 
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (obj['Symbol'] !== Vector2[Symbol.name]) {
-            throw new TypeError('Unrecognized type');
-        }
-        return new Vector2(obj.X, obj.Y);
+    static Deserialize(...args) {
+        return (
+            Vector2.Deserialize = Overload.Create().
+                Add([String], function (str) {
+                    return this.Deserialize(JSON.parse(str));
+                }).
+                Add([window.Object], function (obj) {
+                    if (obj['Symbol'] !== Vector2.name) {
+                        throw new TypeError('Unrecognized type');
+                    }
+                    return new Vector2(obj.X, obj.Y);
+                })
+        ).call(this, ...args);
     }
 }
 

@@ -11,21 +11,33 @@ class Object extends IPrivateVar {
      * 返回表示当前对象类型的字符串。
      * @returns {String} 表示当前对象类型的字符串。
      */
-    static get [Symbol.name](): String
+    static get [Symbol.toStringTag](): String
+
+    /**
+     * 序列化。
+     * @returns {String} 序列化后的字符串。
+     */
+    Serialize(): String
 
     /**
      * 反序列化。
      * @param {String} str 要反序列化的 JSON 字符串。
      * @returns {Object} 实例对象。
      */
-    static fromJSON(str): Object
+    static Deserialize(str: String): Object
 
     /**
      * 反序列化。
      * @param {Object} obj 要反序列化的 JSON 对象。
      * @returns {Object} 实例对象。
      */
-    static fromJSON(obj): Object
+    static Deserialize(obj: object): Object
+
+    /**
+     * 返回表示当前类的字符串。
+     * @returns {String} 表示当前类的字符串。
+     */
+    static ToString(): String
 
     /**
      * 返回表示当前对象的字符串。

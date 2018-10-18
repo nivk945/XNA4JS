@@ -44,10 +44,6 @@ class Ray extends Object {
         )).call(this, ...args);
     }
 
-    static get [Symbol.name]() {
-        return 'Ray';
-    }
-
     Equals(...args) {
         return (
             Ray.prototype.Equals = Overload.Create().
@@ -202,24 +198,35 @@ class Ray extends Object {
                 })
         ).call(this, ...args);
     }
-
-    toJSON() {
-        return super.toJSON({
-            Position: this.Position,
-            Direction: this.Direction
-        });
+    
+    Serialize(...args) {
+        let superSerialize = super.Serialize;
+        return (
+            Quaternion.prototype.Serialize = Overload.Create().
+                Add([String], function () {
+                    return superSerialize.call(this, {
+                        Position: this.Position,
+                        Direction: this.Direction
+                    });
+                })
+        ).call(this, ...args);
     }
 
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (obj['Symbol'] !== Ray[Symbol.name]) {
-            throw new TypeError('Unrecognized type');
-        }
-        let position = Vector3.fromJSON(obj.Position);
-        let direction = Vector3.fromJSON(obj.Direction);
-        return new Ray(position, direction);
+    static Deserialize(...args) {
+        return (
+            Quaternion.Deserialize = Overload.Create().
+                Add([String], function (str) {
+                    return this.Deserialize(JSON.parse(str));
+                }).
+                Add([window.Object], function (obj) {
+                    if (obj['Symbol'] !== Ray.name) {
+                        throw new TypeError('Unrecognized type');
+                    }
+                    let position = Vector3.Deserialize(obj.Position);
+                    let direction = Vector3.Deserialize(obj.Direction);
+                    return new Ray(position, direction);
+                })
+        ).call(this, ...args);
     }
 }
 

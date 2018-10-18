@@ -63,10 +63,6 @@ class Plane extends Object {
         )).call(this, ...args);
     }
 
-    static get [Symbol.name]() {
-        return 'Plane';
-    }
-
     Dot(...args) {
         return (
             Plane.prototype.Dot = Overload.Create().
@@ -199,23 +195,34 @@ class Plane extends Object {
                 })
         ).call(this, ...args);
     }
-
-    toJSON() {
-        return super.toJSON({
-            Normal: this.Normal,
-            D: this.D
-        });
+    
+    Serialize(...args) {
+        let superSerialize = super.Serialize;
+        return (
+            Plane.prototype.Serialize = Overload.Create().
+                Add([String], function () {
+                    return superSerialize.call(this, {
+                        Normal: this.Normal,
+                        D: this.D
+                    });
+                })
+        ).call(this, ...args);
     }
 
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (obj['Symbol'] !== Plane[Symbol.name]) {
-            throw new TypeError('Unrecognized type');
-        }
-        let normal = Vector3.fromJSON(obj.Normal);
-        return new Plane(normal, obj.D);
+    static Deserialize(...args) {
+        return (
+            Plane.Deserialize = Overload.Create().
+                Add([String], function (str) {
+                    return this.Deserialize(JSON.parse(str));
+                }).
+                Add([window.Object], function (obj) {
+                    if (obj['Symbol'] !== Plane.name) {
+                        throw new TypeError('Unrecognized type');
+                    }
+                    let normal = Vector3.Deserialize(obj.Normal);
+                    return new Plane(normal, obj.D);
+                })
+        ).call(this, ...args);
     }
 }
 

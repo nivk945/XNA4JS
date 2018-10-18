@@ -65,10 +65,6 @@ class CurveKey extends Object {
         )).call(this, ...args);
     }
 
-    static get [Symbol.name]() {
-        return 'CurveKey';
-    }
-
     get Position() {
         return this._getPrivateVar('_position');
     }
@@ -123,25 +119,36 @@ class CurveKey extends Object {
         ).call(this, ...args);
     }
 
-    toJSON() {
-        return super.toJSON({
-            Continuity: this.Continuity,
-            _position: this.Position,
-            TangentIn: this.TangentIn,
-            TangentOut: this.TangentOut,
-            Value: this.Value
-        });
+    Serialize(...args) {
+        let superSerialize = super.Serialize;
+        return (
+            CurveKey.prototype.Serialize = Overload.Create().
+                Add([String], function () {
+                    return superSerialize.call(this, {
+                        Continuity: this.Continuity,
+                        _position: this.Position,
+                        TangentIn: this.TangentIn,
+                        TangentOut: this.TangentOut,
+                        Value: this.Value
+                    });
+                })
+        ).call(this, ...args);
     }
 
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (obj['Symbol'] !== CurveKey[Symbol.name]) {
-            throw new TypeError('Unrecognized type');
-        }
-        let continuity = CurveContinuity.fromJSON(obj.Continuity);
-        return new CurveKey(obj._position, obj.Value, obj.TangentIn, obj.TangentOut, continuity);
+    static Deserialize(...args) {
+        return (
+            CurveKey.Deserialize = Overload.Create().
+                Add([String], function (str) {
+                    return this.Deserialize(JSON.parse(str));
+                }).
+                Add([window.Object], function (obj) {
+                    if (obj['Symbol'] !== CurveKey.name) {
+                        throw new TypeError('Unrecognized type');
+                    }
+                    let continuity = CurveContinuity.Deserialize(obj.Continuity);
+                    return new CurveKey(obj._position, obj.Value, obj.TangentIn, obj.TangentOut, continuity);
+                })
+        ).call(this, ...args);
     }
 }
 

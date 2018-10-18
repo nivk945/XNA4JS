@@ -47,14 +47,14 @@ class TypeList extends Object {
 
         (TypeList.prototype.constructor._init || (TypeList.prototype.constructor._init = Overload.Create().
             Add([Function], function (type) {
-                this[Symbol.name] = 'TypeList';
-                this[Symbol.toPrimitive] = type.name;
+                this.__type__ = 'TypeList';
+                this.__internalType__ = type.name;
                 this._setPrivateVar('_type', type);
                 this._setPrivateVar('_list', new Array());
             }).
             Add([Function, Array], function (type, collection) {
-                this[Symbol.name] = 'TypeList';
-                this[Symbol.toPrimitive] = type.name;
+                this.__type__ = 'TypeList';
+                this.__internalType__ = type.name;
                 this._setPrivateVar('_type', type);
                 this._setPrivateVar('_list', new Array());
                 for (let i = 0; i < collection.length; i++) {
@@ -62,8 +62,8 @@ class TypeList extends Object {
                 }
             }).
             Add([Function, Number], function (type, capacity) {
-                this[Symbol.name] = 'TypeList';
-                this[Symbol.toPrimitive] = type.name;
+                this.__type__ = 'TypeList';
+                this.__internalType__ = type.name;
                 this._setPrivateVar('_type', type);
                 this._setPrivateVar('_list', new Array(capacity));
             })
@@ -80,7 +80,7 @@ class TypeList extends Object {
                     if (!proxy) {
                         proxy = new Proxy(TypeList, {
                             get: function (target, prop) {
-                                if (prop === Symbol.toPrimitive) {
+                                if (prop === '__internalType__') {
                                     return type.name;
                                 }
                                 return target[prop];
@@ -92,7 +92,27 @@ class TypeList extends Object {
                 })
         ).call(this, ...args);
     }
-
+    
+    [Symbol.iterator] = function () {
+        const self = this;
+        let index = 0;
+        return {
+            next() {
+                if (index < self.Length) {
+                    return {
+                        value: self[index++],
+                        done: false
+                    }
+                } else {
+                    return {
+                        value: void 0,
+                        done: true
+                    }
+                }
+            }
+        }
+    };
+    
     get Length() {
         return this._getPrivateVar('_list').length;
     }
@@ -221,13 +241,15 @@ class TypeList extends Object {
                 })
         ).call(this, ...args);
     }
-
-    toJSON() {
-        return super.toJSON(this.ToArray());
-    }
-
-    static fromJSON() {
-        throw new EvalError('TypeList base class does not support deserialization');
+    
+    Serialize(...args) {
+        let superSerialize = super.Serialize;
+        return (
+            TypeList.prototype.Serialize = Overload.Create().
+                Add([String], function () {
+                    return superSerialize.call(this, this.ToArray());
+                })
+        ).call(this, ...args);
     }
 }
 

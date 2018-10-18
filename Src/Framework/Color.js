@@ -81,10 +81,6 @@ class Color extends Object {
         )).call(this, ...args);
     }
 
-    static get [Symbol.name]() {
-        return 'Color';
-    }
-
     static get Transparent() {
         return new Color(0, 0, 0, 0);
     }
@@ -759,23 +755,34 @@ class Color extends Object {
         ).call(this, ...args);
     }
 
-    toJSON() {
-        return super.toJSON({
-            R: this.R,
-            G: this.G,
-            B: this.B,
-            A: this.A
-        });
+    Serialize(...args) {
+        let superSerialize = super.Serialize;
+        return (
+            Color.prototype.Serialize = Overload.Create().
+                Add([String], function () {
+                    return superSerialize.call(this, {
+                        R: this.R,
+                        G: this.G,
+                        B: this.B,
+                        A: this.A
+                    });
+                })
+        ).call(this, ...args);
     }
 
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (obj['Symbol'] !== Color[Symbol.name]) {
-            throw new TypeError('Unrecognized type');
-        }
-        return new Color(obj.R, obj.G, obj.B, obj.A);
+    static Deserialize(...args) {
+        return (
+            Color.Deserialize = Overload.Create().
+                Add([String], function (str) {
+                    return this.Deserialize(JSON.parse(str));
+                }).
+                Add([window.Object], function (obj) {
+                    if (obj['Symbol'] !== Color.name) {
+                        throw new TypeError('Unrecognized type');
+                    }
+                    return new Color(obj.R, obj.G, obj.B, obj.A);
+                })
+        ).call(this, ...args);
     }
 }
 

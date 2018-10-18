@@ -1,12 +1,12 @@
-﻿import Object from "../Core/Object.js";
+﻿import Enum from "../Core/Enum.js";
 
 /**
  * 介绍平面和边界体间的交集。
  * @public
  * @enum
- * @extends Object
+ * @extends Enum
  */
-class PlaneIntersectionType extends Object {
+class PlaneIntersectionType extends Enum {
     /**
      * 无交集，边界体位于 Plane 的正半空间。
      * @returns {PlaneIntersectionType}

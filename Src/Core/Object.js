@@ -4,18 +4,38 @@ import IPrivateVar from '../Interface/IPrivateVar.js';
 class Object extends IPrivateVar {
     constructor() {
         super();
-        this[Symbol.name] = this.constructor.name;
     }
 
-    static get [Symbol.name]() {
-        return 'Object';
+    [Symbol.toPrimitive](hint) {
+        throw new TypeError('Prohibit implicit conversion');
+    }
+
+    static get [Symbol.toStringTag]() {
+        return [this.name];
+    }
+
+    static ToString(...args) {
+        return (
+            Object.ToString = Overload.Create().
+                Add([], function () {
+                    return `[class ${this[Symbol.toStringTag]}]`;
+                })
+        ).call(this, ...args);
+    }
+
+    static toString(...args) {
+        return this.ToString(...args);
+    }
+
+    get [Symbol.toStringTag]() {
+        return this.constructor.name;
     }
 
     ToString(...args) {
         return (
             Object.prototype.ToString = Overload.Create().
                 Add([], function () {
-                    return this.constructor.name;
+                    return `[object ${this.constructor.name}]`;
                 })
         ).call(this, ...args);
     }
@@ -24,23 +44,29 @@ class Object extends IPrivateVar {
         return this.ToString(...args);
     }
 
-    toJSON(...args) {
+    Serialize(...args) {
         return (
-            Object.prototype.toJSON = Overload.Create().
+            Object.prototype.Serialize = Overload.Create().
                 Add([], function () {
-                    return { [Symbol.name]: this[Symbol.name] };
+                    return { ['Symbol']: this[Symbol.toStringTag] };
                 }).
                 Add([String], function (str) {
-                    return { [Symbol.name]: this[Symbol.name] };
+                    return { ['Symbol']: this[Symbol.toStringTag] };
                 }).
                 Add([window.Object], function (obj) {
-                    obj[Symbol.name] = this[Symbol.name];
+                    obj['Symbol'] = this[Symbol.toStringTag];
                     return obj;
                 })
         ).call(this, ...args);
     }
 
-    static fromJSON() { }
+    toJSON(...args) {
+        return this.Serialize(...args);
+    }
+
+    static Deserialize() {
+        throw new EvalError('Base class does not support deserialization');
+    }
 
     Equals(...args) {
         return (

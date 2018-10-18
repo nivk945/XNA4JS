@@ -1,9 +1,15 @@
 ﻿const _any = '*';
 
+const _nullFn = function () { };
+
 class Overload {
+    static get [Symbol.toStringTag]() {
+        return 'Overload';
+    }
+
     static Create() {
-        var _parameters = [];
-        var _functions = [];
+        let _parameters = [];
+        let _functions = [];
 
         /**
          * 调用重载函数
@@ -15,9 +21,9 @@ class Overload {
                 throw new Error('Function not implemented');
             }
 
-            var parameters;
+            let parameters;
 
-            for (var i = 0; i < _functions.length; i++) {
+            for (let i = 0; i < _functions.length; i++) {
                 parameters = _parameters[i];
 
                 if (!parameters && !!args.length ||
@@ -27,26 +33,29 @@ class Overload {
                     continue;
                 }
 
-                var checkDone = true;
+                let checkDone = true;
 
                 if (parameters !== null) {
-                    for (var x = 0; x < parameters.length; x++) {
+                    for (let x = 0; x < parameters.length; x++) {
                         // 遍历参数类型
 
-                        var checkType;
+                        let checkType;
 
                         // 检查并跳过参数类型不一致的重载
 
                         checkType = parameters[x];
 
-                        if (checkType !== _any &&
-                            (!(Object(args[x]) instanceof checkType))) {
+                        if (checkType === _any) {
+                            continue;
+                        }
+
+                        if ((!(Object(args[x]) instanceof checkType))) {
                             checkDone = false;
                             break;
                         }
 
-                        if (args[x][Symbol.name]==='TypeList'&&
-                            args[x][Symbol.toPrimitive] !== checkType[Symbol.toPrimitive]) {
+                        if (args[x].__type__ === 'TypeList' &&
+                            args[x].__internalType__ !== checkType.__internalType__) {
                             checkDone = false;
                             break;
                         }
@@ -67,6 +76,12 @@ class Overload {
          * @param {Function} fun 匹配的函数
          */
         _overload.Add = function (typeList, fun) {
+            for (let i = 0; i < typeList.length; i++) {
+                if (typeof typeList[i] !== 'function' && typeList[i] !== _any) {
+                    typeList[i] = _nullFn;
+                }
+            }
+
             _parameters.push(typeList);
             _functions.push(fun);
 

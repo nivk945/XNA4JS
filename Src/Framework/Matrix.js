@@ -136,10 +136,6 @@ class Matrix extends Object {
         )).call(this, ...args);
     }
 
-    static get [Symbol.name]() {
-        return 'Matrix';
-    }
-
     static get Identity() {
         return new Matrix(1, 0, 0, 0,
             0, 1, 0, 0,
@@ -1200,27 +1196,38 @@ class Matrix extends Object {
         ).call(this, ...args);
     }
 
-    toJSON() {
-        let obj = {};
-        for (let x = 1; x <= 4; x++) {
-            for (let y = 1; y <= 4; y++) {
-                obj[`M${y}${x}`] = this[`M${y}${x}`];
-            }
-        }
-        return super.toJSON(obj);
+    Serialize(...args) {
+        let superSerialize = super.Serialize;
+        return (
+            Matrix.prototype.Serialize = Overload.Create().
+                Add([String], function () {
+                    let obj = {};
+                    for (let x = 1; x <= 4; x++) {
+                        for (let y = 1; y <= 4; y++) {
+                            obj[`M${y}${x}`] = this[`M${y}${x}`];
+                        }
+                    }
+                    return superSerialize.call(this, obj);
+                })
+        ).call(this, ...args);
     }
 
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (obj['Symbol'] !== Matrix[Symbol.name]) {
-            throw new TypeError('Unrecognized type');
-        }
-        return new Matrix(obj.M11, obj.M12, obj.M13, obj.M14,
-            obj.M21, obj.M22, obj.M23, obj.M24,
-            obj.M31, obj.M32, obj.M33, obj.M34,
-            obj.M41, obj.M42, obj.M43, obj.M44);
+    static Deserialize(...args) {
+        return (
+            Matrix.Deserialize = Overload.Create().
+                Add([String], function (str) {
+                    return this.Deserialize(JSON.parse(str));
+                }).
+                Add([window.Object], function (obj) {
+                    if (obj['Symbol'] !== Matrix.name) {
+                        throw new TypeError('Unrecognized type');
+                    }
+                    return new Matrix(obj.M11, obj.M12, obj.M13, obj.M14,
+                        obj.M21, obj.M22, obj.M23, obj.M24,
+                        obj.M31, obj.M32, obj.M33, obj.M34,
+                        obj.M41, obj.M42, obj.M43, obj.M44);
+                })
+        ).call(this, ...args);
     }
 }
 

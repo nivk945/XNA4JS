@@ -102,10 +102,6 @@ class BoundingFrustum extends Object {
         )).call(this, ...args);
     }
 
-    static get [Symbol.name]() {
-        return 'BoundingFrustum';
-    }
-
     static get PlaneCount() {
         return 6;
     }
@@ -308,21 +304,32 @@ class BoundingFrustum extends Object {
         ).call(this, ...args);
     }
 
-    toJSON() {
-        return super.toJSON({
-            Matrix: this.Matrix
-        });
+    Serialize(...args) {
+        let superSerialize = super.Serialize;
+        return (
+            BoundingFrustum.prototype.Serialize = Overload.Create().
+                Add([String], function () {
+                    return superSerialize.call(this, {
+                        Matrix: this.Matrix
+                    });
+                })
+        ).call(this, ...args);
     }
 
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (obj['Symbol'] !== BoundingFrustum[Symbol.name]) {
-            throw new TypeError('Unrecognized type');
-        }
-        let matrix = Matrix.fromJSON(obj.Matrix);
-        return new BoundingFrustum(matrix);
+    static Deserialize(...args) {
+        return (
+            BoundingFrustum.Deserialize = Overload.Create().
+                Add([String], function (str) {
+                    return this.Deserialize(JSON.parse(str));
+                }).
+                Add([window.Object], function (obj) {
+                    if (obj['Symbol'] !== BoundingFrustum.name) {
+                        throw new TypeError('Unrecognized type');
+                    }
+                    let matrix = Matrix.Deserialize(obj.Matrix);
+                    return new BoundingFrustum(matrix);
+                })
+        ).call(this, ...args);
     }
 }
 

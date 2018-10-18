@@ -1,12 +1,12 @@
-﻿import Object from "../Core/Object.js";
+import Enum from "../Core/Enum.js";
 
 /**
  * 指示边界体相互插入或包含的程度。
  * @public
  * @enum
- * @extends Object
+ * @extends Enum
  */
-class ContainmentType extends Object {
+class ContainmentType extends Enum {
     /**
      * 表明存在两个边界卷之间没有重叠。
      * @returns {ContainmentType}

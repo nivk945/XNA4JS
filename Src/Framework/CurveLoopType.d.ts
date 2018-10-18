@@ -1,12 +1,12 @@
-﻿import Object from "../Core/Object.js";
+﻿import Enum from "../Core/Enum.js";
 
 /**
  * 定义如何为 Curve 起点前面或 Curve 终点后面的位置确定 Curve 的值。
  * @public
  * @enum
- * @extends Object
+ * @extends Enum
  */
-class CurveLoopType extends Object {
+class CurveLoopType extends Enum {
     /**
      * Curve 将计算为其在 Curve 起点前位置的第一项和终点后位置的最后一项。
      */

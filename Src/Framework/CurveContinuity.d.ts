@@ -1,12 +1,12 @@
-﻿import Object from "../Core/Object.js";
+﻿import Enum from "../Core/Enum.js";
 
 /**
  * 定义 Curve 上 CurveKeys 的连续性。
  * @public
  * @enum
- * @extends Object
+ * @extends Enum
  */
-class CurveContinuity extends Object {
+class CurveContinuity extends Enum {
     /**
      * 可以在两个连续的 CurveKey 之间使用插值。
      */

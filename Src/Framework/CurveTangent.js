@@ -12,16 +12,6 @@ class CurveTangent extends Enum {
     static get Smooth() {
         return SMOOTH;
     }
-
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (!CurveTangent[obj['_enum']]) {
-            throw new TypeError('Unrecognized type');
-        }
-        return CurveTangent[obj['_enum']];
-    }
 }
 
 const FLAT = new CurveTangent('Flat');

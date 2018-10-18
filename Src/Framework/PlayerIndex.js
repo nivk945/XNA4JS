@@ -16,16 +16,6 @@ class PlayerIndex extends Enum {
     static get Four() {
         return FOUR;
     }
-
-    static fromJSON(obj) {
-        if (typeof obj === 'string') {
-            obj = JSON.parse(obj);
-        }
-        if (!PlayerIndex[obj['_enum']]) {
-            throw new TypeError('Unrecognized type');
-        }
-        return PlayerIndex[obj['_enum']];
-    }
 }
 
 const ONE = new PlayerIndex('One');

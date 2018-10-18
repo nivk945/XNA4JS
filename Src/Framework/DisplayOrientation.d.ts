@@ -1,12 +1,12 @@
-﻿import Object from "../Core/Object.js";
+﻿import Enum from "../Core/Enum.js";
 
 /**
  * 定义显示方向。
  * @public
  * @enum
- * @extends Object
+ * @extends Enum
  */
-class DisplayOrientation extends Object {
+class DisplayOrientation extends Enum {
     /**
      * 默认显示方向。
      * @returns {DisplayOrientation}
