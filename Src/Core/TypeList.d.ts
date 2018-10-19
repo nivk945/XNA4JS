@@ -56,24 +56,24 @@ class TypeList extends Object {
      * 向数组末尾追加一个元素。
      * @param {any} item 要追加的元素。
      */
-    Add(item: any): null
+    Add(item: any): void
 
     /**
      * 向数组末尾追加一组元素。
      * @param {Array} arr 要追加的元素数组。
      */
-    AddRange(arr: Array): null
+    AddRange(arr: Array): void
 
     /**
      * 遍历数组内的每个元素并调用传入的函数。
      * @param {Function} fn 在循环体内要调用的函数。
      */
-    ForEach(fn: Function): null
+    ForEach(fn: Function): void
 
     /**
      * 清空数组。
      */
-    Clear(): null
+    Clear(): void
 
     /**
      * 检查元素是否包含于数组内。
@@ -94,19 +94,19 @@ class TypeList extends Object {
      * @param {Number} index 要插入的元素。
      * @param {any} value
      */
-    Insert(index: Number, value: any): null
+    Insert(index: Number, value: any): void
 
     /**
      * 将传入的元素在数组内移除。
      * @param {any} value 要移除的元素。
      */
-    Remove(value: any): null
+    Remove(value: any): void
 
     /**
      * 根据索引移除元素。
      * @param {Number} index 索引值。
      */
-    RemoveAt(index: Number): null
+    RemoveAt(index: Number): void
 
     /**
      * 转换成 Array。

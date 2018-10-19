@@ -197,7 +197,7 @@ class Plane extends Object {
     }
     
     Serialize(...args) {
-        let superSerialize = super.Serialize;
+        const superSerialize = super.Serialize;
         return (
             Plane.prototype.Serialize = Overload.Create().
                 Add([String], function () {

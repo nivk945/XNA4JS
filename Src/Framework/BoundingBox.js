@@ -395,7 +395,7 @@ class BoundingBox extends Object {
     }
 
     Serialize(...args) {
-        let superSerialize = super.Serialize;
+        const superSerialize = super.Serialize;
         return (
             BoundingBox.prototype.Serialize = Overload.Create().
                 Add([String], function () {

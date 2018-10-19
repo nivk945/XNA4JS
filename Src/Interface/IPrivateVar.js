@@ -1,4 +1,4 @@
-﻿import Overload from "../Core/Overload.js";
+﻿import Overload from '../Core/Overload.js';
 
 let privateVars = new WeakMap();
 

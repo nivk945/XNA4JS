@@ -522,7 +522,7 @@ class Vector3 extends Object {
     }
     
     Serialize(...args) {
-        let superSerialize = super.Serialize;
+        const superSerialize = super.Serialize;
         return (
             Vector3.prototype.Serialize = Overload.Create().
                 Add([String], function () {

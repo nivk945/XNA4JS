@@ -28,7 +28,7 @@ class Curve extends Object {
      * 设置指定如何处理小于曲线中第一个控制点的权重值。
      * @param {CurveLoopType} value 值。
      */
-    set PreLoop(value: CurveLoopType): null
+    set PreLoop(value: CurveLoopType): void
 
     /**
      * 获取指定如何处理大于曲线中最后一个控制点的权重值。
@@ -40,7 +40,7 @@ class Curve extends Object {
      * 设置指定如何处理大于曲线中最后一个控制点的权重值。
      * @param {CurveLoopType} value 值。
      */
-    set PostLoop(value: CurveLoopType): null
+    set PostLoop(value: CurveLoopType): void
 
     /**
      * 构成曲线的点。
@@ -65,7 +65,7 @@ class Curve extends Object {
      * @param {Number} keyIndex 要计算切线的 CurveKey 的索引（在 Curve 的 Keys 集合中）。
      * @param {CurveTangent} tangentType 要计算的切线的类型（CurveTangent 枚举中指定的一个类型）。
      */
-    ComputeTangent(keyIndex: Number, tangentType: CurveTangent): null
+    ComputeTangent(keyIndex: Number, tangentType: CurveTangent): void
 
     /**
      * 为给定的 CurveKey 计算指定类型的 TangentIn 和指定类型的 TangentOut。
@@ -73,20 +73,20 @@ class Curve extends Object {
      * @param {CurveTangent} tangentInType 要计算的 TangentIn 的类型（CurveTangent 枚举中指定的一个类型）。
      * @param {CurveTangent} tangentOutType 要计算的 TangentOut 的类型（CurveTangent 枚举中指定的一个类型）。
      */
-    ComputeTangent(keyIndex: Number, tangentInType: CurveTangent, tangentOutType: CurveTangent): null
+    ComputeTangent(keyIndex: Number, tangentInType: CurveTangent, tangentOutType: CurveTangent): void
 
     /**
      * 为 TangentIn 和 TangentOut 使用指定的切线类型，计算该 Curve 中所有 CurveKey 的切线。
      * @param {CurveTangent} tangentType 要计算的 TangentOut 和 TangentIn 的类型（CurveTangent 枚举中指定的一个类型）。
      */
-    ComputeTangents(tangentType: CurveTangent): null
+    ComputeTangents(tangentType: CurveTangent): void
 
     /**
      * 为 TangentOut 和 TangentIn 使用不同的切线类型，计算该 Curve 中所有 CurveKey 的切线。
      * @param {CurveTangent} tangentInType 要计算的 TangentIn 的类型（CurveTangent 枚举中指定的一个类型）。
      * @param {CurveTangent} tangentOutType 要计算的 TangentOut 的类型（CurveTangent 枚举中指定的一个类型）。
      */
-    ComputeTangents(tangentInType: CurveTangent, tangentOutType: CurveTangent): null
+    ComputeTangents(tangentInType: CurveTangent, tangentOutType: CurveTangent): void
 
     /**
      * 查找曲线上某个位置的值。

@@ -1,4 +1,4 @@
-﻿import Enum from "../Core/Enum.js";
+﻿import Enum from '../Core/Enum.js';
 
 /**
  * 定义如何为 Curve 起点前面或 Curve 终点后面的位置确定 Curve 的值。

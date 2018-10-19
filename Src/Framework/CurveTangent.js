@@ -1,4 +1,4 @@
-﻿import Enum from "../Core/Enum.js";
+﻿import Enum from '../Core/Enum.js';
 
 class CurveTangent extends Enum {
     static get Flat() {

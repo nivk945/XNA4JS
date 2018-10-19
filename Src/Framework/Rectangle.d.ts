@@ -36,7 +36,7 @@ class Rectangle extends Object {
      * 设置指定矩形的 x 方向坐标。
      * @param {Number} value 值。
      */
-    set X(value: Number): null
+    set X(value: Number): void
 
     /**
      * 获取指定矩形的 y 方向坐标。
@@ -48,7 +48,7 @@ class Rectangle extends Object {
      * 设置指定矩形的 y 方向坐标。
      * @param {Number} value 值。
      */
-    set Y(value: Number): null
+    set Y(value: Number): void
 
     /**
      * 获取指定矩形的宽度。
@@ -60,7 +60,7 @@ class Rectangle extends Object {
      * 设置指定矩形的宽度。
      * @param {Number} value 值。
      */
-    set Width(value: Number): null
+    set Width(value: Number): void
 
     /**
      * 获取指定矩形的高度。
@@ -72,7 +72,7 @@ class Rectangle extends Object {
      * 设置指定矩形的高度。
      * @param {Number} value 值。
      */
-    set Height(value: Number): null
+    set Height(value: Number): void
 
     /**
      * 获取 Rectangle 的左上角值。
@@ -169,7 +169,7 @@ class Rectangle extends Object {
      * @param {Number} horizontalAmount 向外推动边缘的值。
      * @param {Number} verticalAmount 向外推动顶部和底部的值。
      */
-    Inflate(horizontalAmount: Number, verticalAmount: Number): null
+    Inflate(horizontalAmount: Number, verticalAmount: Number): void
 
     /**
      * 创建一个 Rectangle，用于定义一个矩形与另一个矩形重叠的区域。

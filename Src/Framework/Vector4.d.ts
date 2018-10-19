@@ -65,7 +65,7 @@ class Vector4 extends Object {
      * 设置矢量的 x 色差。
      * @param {Number} value 值。
      */
-    set X(value: Number): null
+    set X(value: Number): void
 
     /**
      * 获取矢量的 y 色差。
@@ -77,7 +77,7 @@ class Vector4 extends Object {
      * 设置矢量的 y 色差。
      * @param {Number} value 值。
      */
-    set Y(value: Number): null
+    set Y(value: Number): void
 
     /**
      * 获取矢量的 z 色差。
@@ -89,7 +89,7 @@ class Vector4 extends Object {
      * 设置矢量的 z 色差。
      * @param {Number} value 值。
      */
-    set Z(value: Number): null
+    set Z(value: Number): void
 
     /**
      * 获取矢量的 w 色差。
@@ -101,7 +101,7 @@ class Vector4 extends Object {
      * 设置矢量的 w 色差。
      * @param {Number} value 值。
      */
-    set W(value: Number): null
+    set W(value: Number): void
 
     /**
      * 返回所有组件均设置为一的 Vector4。
@@ -329,7 +329,7 @@ class Vector4 extends Object {
     /**
      * 将当前矢量转为单位矢量。
      */
-    Normalize(): null
+    Normalize(): void
 
     /**
      * 使用三次方程计算两个值之间的插值。
@@ -420,7 +420,7 @@ class Vector4 extends Object {
      * @param {Number} destinationIndex 目标数组中要写入的首个 Vector4 的索引。
      * @param {Number} length 要变换的 Vector4 数量。
      */
-    static Transform(sourceArray: TypeList<Vector4>, sourceIndex: Number, matrix: Matrix, destinationArray: TypeList<Vector4>, destinationIndex: Number, length: Number): null
+    static Transform(sourceArray: TypeList<Vector4>, sourceIndex: Number, matrix: Matrix, destinationArray: TypeList<Vector4>, destinationIndex: Number, length: Number): void
 
     /**
      * 通过指定 Quaternion 将 Vector4 数组中的指定范围变换为目标数组的指定范围。
@@ -432,7 +432,7 @@ class Vector4 extends Object {
      * @param {Number} destinationIndex 目标数组中要写入的首个 Vector4 的索引。
      * @param {Number} length 要变换的 Vector4 数量。
      */
-    static Transform(sourceArray: TypeList<Vector4>, sourceIndex: Number, rotation: Quaternion, destinationArray: TypeList<Vector4>, destinationIndex: Number, length: Number): null
+    static Transform(sourceArray: TypeList<Vector4>, sourceIndex: Number, rotation: Quaternion, destinationArray: TypeList<Vector4>, destinationIndex: Number, length: Number): void
 
     /**
      * 通过指定 Matrix 变换 Vector4 数组。
@@ -441,7 +441,7 @@ class Vector4 extends Object {
      * @param {Matrix} matrix 要应用的变换 Matrix。
      * @param {TypeList<Vector4>} destinationArray [out]变换后的 Vector4 被写入的现有目标数组。
      */
-    static Transform(sourceArray: TypeList<Vector4>, matrix: Matrix, destinationArray: TypeList<Vector4>): null
+    static Transform(sourceArray: TypeList<Vector4>, matrix: Matrix, destinationArray: TypeList<Vector4>): void
 
     /**
      * 通过指定 Quaternion 变换 Vector4 数组。
@@ -450,7 +450,7 @@ class Vector4 extends Object {
      * @param {Quaternion} rotation 要应用的 Quaternion 旋转。
      * @param {TypeList<Vector4>} destinationArray [out]变换后的 Vector4 被写入的现有目标数组。
      */
-    static Transform(sourceArray: TypeList<Vector4>, rotation: Quaternion, destinationArray: TypeList<Vector4>): null
+    static Transform(sourceArray: TypeList<Vector4>, rotation: Quaternion, destinationArray: TypeList<Vector4>): void
 }
 
 export default Vector4;

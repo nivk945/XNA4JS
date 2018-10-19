@@ -1,4 +1,4 @@
-﻿import Enum from "../Core/Enum.js";
+﻿import Enum from '../Core/Enum.js';
 
 /**
  * 定义显示方向。

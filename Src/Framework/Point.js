@@ -85,7 +85,7 @@ class Point extends Object {
     }
 
     Serialize(...args) {
-        let superSerialize = super.Serialize;
+        const superSerialize = super.Serialize;
         return (
             Point.prototype.Serialize = Overload.Create().
                 Add([String], function () {

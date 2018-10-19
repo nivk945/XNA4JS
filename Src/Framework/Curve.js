@@ -244,7 +244,7 @@ class Curve extends Object {
     }
 
     Serialize(...args) {
-        let superSerialize = super.Serialize;
+        const superSerialize = super.Serialize;
         return (
             Curve.prototype.Serialize = Overload.Create().
                 Add([String], function () {

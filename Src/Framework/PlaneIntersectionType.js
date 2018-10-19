@@ -1,4 +1,4 @@
-﻿import Enum from "../Core/Enum.js";
+﻿import Enum from '../Core/Enum.js';
 
 class PlaneIntersectionType extends Enum {
     static get Front() {

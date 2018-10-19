@@ -1,4 +1,4 @@
-﻿import Enum from "../Core/Enum.js";
+﻿import Enum from '../Core/Enum.js';
 
 class DisplayOrientation extends Enum {
     static get Default() {

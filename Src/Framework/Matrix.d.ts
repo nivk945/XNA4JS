@@ -53,7 +53,7 @@ class Matrix extends Object {
      * 设置矩阵的行 1 列 1 的值。
      * @param {Number} value 值。
      */
-    set M11(value: Number): null
+    set M11(value: Number): void
 
     /**
      * 获取矩阵的行 1 列 2 的值。
@@ -65,7 +65,7 @@ class Matrix extends Object {
      * 设置矩阵的行 1 列 2 的值。
      * @param {Number} value 值。
      */
-    set M12(value: Number): null
+    set M12(value: Number): void
 
     /**
      * 获取矩阵的行 1 列 3 的值。
@@ -77,7 +77,7 @@ class Matrix extends Object {
      * 设置矩阵的行 1 列 3 的值。
      * @param {Number} value 值。
      */
-    set M13(value: Number): null
+    set M13(value: Number): void
 
     /**
      * 获取矩阵的行 1 列 4 的值。
@@ -89,7 +89,7 @@ class Matrix extends Object {
      * 设置矩阵的行 1 列 4 的值。
      * @param {Number} value 值。
      */
-    set M14(value: Number): null
+    set M14(value: Number): void
 
     /**
      * 获取矩阵的行 2 列 1 的值。
@@ -101,7 +101,7 @@ class Matrix extends Object {
      * 设置矩阵的行 2 列 1 的值。
      * @param {Number} value 值。
      */
-    set M21(value: Number): null
+    set M21(value: Number): void
 
     /**
      * 获取矩阵的行 2 列 2 的值。
@@ -113,7 +113,7 @@ class Matrix extends Object {
      * 设置矩阵的行 2 列 2 的值。
      * @param {Number} value 值。
      */
-    set M22(value: Number): null
+    set M22(value: Number): void
 
     /**
      * 获取矩阵的行 2 列 3 的值。
@@ -125,7 +125,7 @@ class Matrix extends Object {
      * 设置矩阵的行 2 列 3 的值。
      * @param {Number} value 值。
      */
-    set M23(value: Number): null
+    set M23(value: Number): void
 
     /**
      * 获取矩阵的行 2 列 4 的值。
@@ -137,7 +137,7 @@ class Matrix extends Object {
      * 设置矩阵的行 2 列 4 的值。
      * @param {Number} value 值。
      */
-    set M24(value: Number): null
+    set M24(value: Number): void
 
     /**
      * 获取矩阵的行 3 列 1 的值。
@@ -149,7 +149,7 @@ class Matrix extends Object {
      * 设置矩阵的行 3 列 1 的值。
      * @param {Number} value 值。
      */
-    set M31(value: Number): null
+    set M31(value: Number): void
 
     /**
      * 获取矩阵的行 3 列 2 的值。
@@ -161,7 +161,7 @@ class Matrix extends Object {
      * 设置矩阵的行 3 列 2 的值。
      * @param {Number} value 值。
      */
-    set M32(value: Number): null
+    set M32(value: Number): void
 
     /**
      * 获取矩阵的行 3 列 3 的值。
@@ -173,7 +173,7 @@ class Matrix extends Object {
      * 设置矩阵的行 3 列 3 的值。
      * @param {Number} value 值。
      */
-    set M33(value: Number): null
+    set M33(value: Number): void
 
     /**
      * 获取矩阵的行 3 列 4 的值。
@@ -185,7 +185,7 @@ class Matrix extends Object {
      * 设置矩阵的行 3 列 4 的值。
      * @param {Number} value 值。
      */
-    set M34(value: Number): null
+    set M34(value: Number): void
 
     /**
      * 获取矩阵的行 4 列 1 的值。
@@ -197,7 +197,7 @@ class Matrix extends Object {
      * 设置矩阵的行 4 列 1 的值。
      * @param {Number} value 值。
      */
-    set M41(value: Number): null
+    set M41(value: Number): void
 
     /**
      * 获取矩阵的行 4 列 2 的值。
@@ -209,7 +209,7 @@ class Matrix extends Object {
      * 设置矩阵的行 4 列 2 的值。
      * @param {Number} value 值。
      */
-    set M42(value: Number): null
+    set M42(value: Number): void
 
     /**
      * 获取矩阵的行 4 列 3 的值。
@@ -221,7 +221,7 @@ class Matrix extends Object {
      * 设置矩阵的行 4 列 3 的值。
      * @param {Number} value 值。
      */
-    set M43(value: Number): null
+    set M43(value: Number): void
 
     /**
      * 获取矩阵的行 4 列 4 的值。
@@ -233,7 +233,7 @@ class Matrix extends Object {
      * 设置矩阵的行 4 列 4 的值。
      * @param {Number} value 值。
      */
-    set M44(value: Number): null
+    set M44(value: Number): void
 
     /**
      * 获取 Matrix 的后向矢量。
@@ -245,7 +245,7 @@ class Matrix extends Object {
      * 设置 Matrix 的后向矢量。
      * @param {Vector3} value 值。
      */
-    set Backward(value: Vector3): null
+    set Backward(value: Vector3): void
 
     /**
      * 获取 Matrix 的向下矢量。
@@ -257,7 +257,7 @@ class Matrix extends Object {
      * 设置 Matrix 的向下矢量。
      * @param {Vector3} value 值。
      */
-    set Down(value: Vector3): null
+    set Down(value: Vector3): void
 
     /**
      * 获取 Matrix 的向前矢量。
@@ -269,7 +269,7 @@ class Matrix extends Object {
      * 设置 Matrix 的向前矢量。
      * @param {Vector3} value 值。
      */
-    set Forward(value: Vector3): null
+    set Forward(value: Vector3): void
 
     /**
      * 获取 Matrix 的向左矢量。
@@ -281,7 +281,7 @@ class Matrix extends Object {
      * 设置 Matrix 的向左矢量。
      * @param {Vector3} value 值。
      */
-    set Left(value: Vector3): null
+    set Left(value: Vector3): void
 
     /**
      * 获取 Matrix 的向右矢量。
@@ -293,7 +293,7 @@ class Matrix extends Object {
      * 设置 Matrix 的向右矢量。
      * @param {Vector3} value 值。
      */
-    set Right(value: Vector3): null
+    set Right(value: Vector3): void
 
     /**
      * 获取 Matrix 的向上矢量。
@@ -305,7 +305,7 @@ class Matrix extends Object {
      * 设置 Matrix 的向上矢量。
      * @param {Vector3} value 值。
      */
-    set Up(value: Vector3): null
+    set Up(value: Vector3): void
 
     /**
      * [非XNA4.0标准]获取 Matrix 的缩放矢量。
@@ -317,7 +317,7 @@ class Matrix extends Object {
      * [非XNA4.0标准]设置 Matrix 的缩放矢量。
      * @param {Vector3} value 值。
      */
-    set Scale(value: Vector3): null
+    set Scale(value: Vector3): void
 
     /**
      * 获取 Matrix 的平移矢量。
@@ -329,7 +329,7 @@ class Matrix extends Object {
      * 设置 Matrix 的平移矢量。
      * @param {Vector3} value 值。
      */
-    set Translation(value: Vector3): null
+    set Translation(value: Vector3): void
 
     /**
      * 返回标识矩阵的实例。

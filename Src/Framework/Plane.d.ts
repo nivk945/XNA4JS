@@ -71,7 +71,7 @@ class Plane extends Object {
      * 设置 Plane 的法线矢量。
      * @param {Vector3} value 值。
      */
-    set Normal(value: Vector3): null
+    set Normal(value: Vector3): void
 
     /**
      * 获取 Plane 从原点位置起沿法线方向的距离。
@@ -83,7 +83,7 @@ class Plane extends Object {
      * 设置 Plane 从原点位置起沿法线方向的距离。
      * @param {Number} value 值。
      */
-    set D(value: Number): null
+    set D(value: Number): void
 
     /**
      * 计算指定的 Vector4 和此 Plane 的点积。
@@ -158,7 +158,7 @@ class Plane extends Object {
     /**
      * 更改该 Plane 的 Normal 矢量系数以使其成为单位长度。
      */
-    Normalize(): null
+    Normalize(): void
 
     /**
      * 通过 Quaternion 旋转变换法线化 Plane。

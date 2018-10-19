@@ -54,7 +54,7 @@ class Quaternion extends Object {
      * 设置指定四元数矢量色差的 x 值。
      * @param {Number} value 值。
      */
-    set X(value: Number): null
+    set X(value: Number): void
 
     /**
      * 获取指定四元数矢量色差的 y 值。
@@ -66,7 +66,7 @@ class Quaternion extends Object {
      * 设置指定四元数矢量色差的 y 值。
      * @param {Number} value 值。
      */
-    set Y(value: Number): null
+    set Y(value: Number): void
 
     /**
      * 获取指定四元数矢量色差的 z 值。
@@ -78,7 +78,7 @@ class Quaternion extends Object {
      * 设置指定四元数矢量色差的 z 值。
      * @param {Number} value 值。
      */
-    set Z(value: Number): null
+    set Z(value: Number): void
 
     /**
      * 获取指定四元数矢量色差的 w 值。
@@ -90,7 +90,7 @@ class Quaternion extends Object {
      * 设置指定四元数矢量色差的 w 值。
      * @param {Number} value 值。
      */
-    set W(value: Number): null
+    set W(value: Number): void
 
     /**
      * 返回呈现无旋转的 Quaternion。
@@ -249,7 +249,7 @@ class Quaternion extends Object {
     /**
      * 以四元数的长度除四元数的每个组件。
      */
-    Normalize(): null
+    Normalize(): void
 
     /**
      * 使用球面线性插值计算两个四元数之间的插值。

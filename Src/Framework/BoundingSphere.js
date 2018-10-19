@@ -325,7 +325,7 @@ class BoundingSphere extends Object {
     }
 
     Serialize(...args) {
-        let superSerialize = super.Serialize;
+        const superSerialize = super.Serialize;
         return (
             BoundingSphere.prototype.Serialize = Overload.Create().
                 Add([String], function () {

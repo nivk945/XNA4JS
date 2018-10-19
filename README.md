@@ -27,7 +27,8 @@ Microsoft.Xna.Framework
  * CurveLoopType  
  * CurveTangent  
  * DisplayOrientation  
- * FrameworkDispatcher  
+ * FrameworkDispatcher[TODO:Microsoft.Xna.Framework.Audio]  
+ * GameWindow  
  * MathHelper  
  * Matrix  
  * Plane  
@@ -41,6 +42,9 @@ Microsoft.Xna.Framework
  * Vector3  
  * Vector4  
 
+Microsoft.Xna.Framework.Graphics  
+ * Enums
+
 
 待实现(Pending)：  
 
@@ -52,6 +56,9 @@ Microsoft.Xna.Framework.Content
 Microsoft.Xna.Framework.Design  
 Microsoft.Xna.Framework.GamerServices  
 Microsoft.Xna.Framework.Graphics  
+
+ * Classes
+
 Microsoft.Xna.Framework.Input  
 Microsoft.Xna.Framework.Meida  
 Microsoft.Xna.Framework.Net  

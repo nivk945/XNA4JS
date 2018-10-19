@@ -47,7 +47,7 @@ class Vector2 extends Object {
      * 设置矢量的 x 色差。
      * @param {Number} value 值。
      */
-    set X(value: Number): null
+    set X(value: Number): void
 
     /**
      * 获取矢量的 y 色差。
@@ -59,7 +59,7 @@ class Vector2 extends Object {
      * 设置矢量的 y 色差。
      * @param {Number} value 值。
      */
-    set Y(value: Number): null
+    set Y(value: Number): void
 
     /**
      * 返回两个组件均设置为一的 Vector2。
@@ -273,7 +273,7 @@ class Vector2 extends Object {
     /**
      * 将当前矢量转为单位矢量。结果是与原始矢量相同方向的长度矢量单位。
      */
-    Normalize(): null
+    Normalize(): void
 
     /**
      * 确定给定矢量和法线的反射矢量。
@@ -337,7 +337,7 @@ class Vector2 extends Object {
      * @param {Number} destinationIndex 目标数组中应将首个结果 Vector2 写入到的位置的索引。
      * @param {Number} length 要变换的 Vector2 的数量。
      */
-    static Transform(sourceArray: TypeList<Vector2>, sourceIndex: Number, matrix: Matrix, destinationArray: TypeList<Vector2>, destinationIndex: Number, length: Number): null
+    static Transform(sourceArray: TypeList<Vector2>, sourceIndex: Number, matrix: Matrix, destinationArray: TypeList<Vector2>, destinationIndex: Number, length: Number): void
    
     /**
      * 通过指定 Quaternion 变换 Vector2 数组中的指定范围，并将结果放置在目标数组的指定范围内。
@@ -349,7 +349,7 @@ class Vector2 extends Object {
      * @param {Number} destinationIndex 目标数组中应将首个结果 Vector2 写入到的位置的索引。
      * @param {Number} length 要变换的 Vector2 的数量。
      */
-    static Transform(sourceArray: TypeList<Vector2>, sourceIndex: Number, rotation: Quaternion, destinationArray: TypeList<Vector2>, destinationIndex: Number, length: Number): null
+    static Transform(sourceArray: TypeList<Vector2>, sourceIndex: Number, rotation: Quaternion, destinationArray: TypeList<Vector2>, destinationIndex: Number, length: Number): void
 
     /**
      * 通过指定 Matrix 变换 Vector2 数组。
@@ -358,7 +358,7 @@ class Vector2 extends Object {
      * @param {Matrix} matrix 要应用的变换 Matrix。
      * @param {TypeList<Vector2>} destinationArray [out]变换后的 Vector2 被写入的现有数组。
      */
-    static Transform(sourceArray: TypeList<Vector2>, matrix: Matrix, destinationArray: TypeList<Vector2>): null
+    static Transform(sourceArray: TypeList<Vector2>, matrix: Matrix, destinationArray: TypeList<Vector2>): void
 
     /**
      * 通过指定 Quaternion 变换 Vector2 数组。
@@ -367,7 +367,7 @@ class Vector2 extends Object {
      * @param {Quaternion} rotation 要使用的变换 Matrix。
      * @param {TypeList<Vector2>} destinationArray [out]变换后的 Vector2 被写入的现有数组。
      */
-    static Transform(sourceArray: TypeList<Vector2>, rotation: Quaternion, destinationArray: TypeList<Vector2>): null
+    static Transform(sourceArray: TypeList<Vector2>, rotation: Quaternion, destinationArray: TypeList<Vector2>): void
 
     /**
      * 通过矩阵变换 2D 矢量法线。
@@ -388,7 +388,7 @@ class Vector2 extends Object {
      * @param {Number} destinationIndex 目标数组中应将首个结果 Vector2 写入到的位置的索引。
      * @param {Number} length 要变换的矢量法线的数量。
      */
-    static TransformNormal(sourceArray: TypeList<Vector2>, sourceIndex: Number, matrix: Matrix, destinationArray: TypeList<Vector2>, destinationIndex: Number, length: Number): null
+    static TransformNormal(sourceArray: TypeList<Vector2>, sourceIndex: Number, matrix: Matrix, destinationArray: TypeList<Vector2>, destinationIndex: Number, length: Number): void
 
     /**
      * 通过指定 Matrix 变换 Vector2 矢量法线数组。
@@ -397,7 +397,7 @@ class Vector2 extends Object {
      * @param {Matrix} matrix 要应用的变换 Matrix。
      * @param {TypeList<Vector2>} destinationArray [out]变换后的矢量法线被写入的现有数组。
      */
-    static TransformNormal(sourceArray: TypeList<Vector2>, matrix: Matrix, destinationArray: TypeList<Vector2>): null
+    static TransformNormal(sourceArray: TypeList<Vector2>, matrix: Matrix, destinationArray: TypeList<Vector2>): void
 }
 
 export default Vector2;

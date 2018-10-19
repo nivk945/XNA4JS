@@ -1,4 +1,4 @@
-import Enum from "../Core/Enum.js";
+import Enum from '../Core/Enum.js';
 
 /**
  * 指示边界体相互插入或包含的程度。

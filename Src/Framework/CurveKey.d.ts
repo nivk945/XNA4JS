@@ -63,7 +63,7 @@ class CurveKey extends Object {
      * 设置描述曲线上的该点和下一点之间的线段是离散还是连续。
      * @param {CurveLoopType} value 值。
      */
-    set Continuity(value: CurveContinuity): null
+    set Continuity(value: CurveContinuity): void
 
     /**
      * 获取描述该点的值。
@@ -75,7 +75,7 @@ class CurveKey extends Object {
      * 设置描述该点的值。
      * @param {Number} value 值。
      */
-    set Value(value: Number): null
+    set Value(value: Number): void
 
     /**
      * 获取介绍曲线中的先前点接近该点时的切线。
@@ -87,7 +87,7 @@ class CurveKey extends Object {
      * 设置介绍曲线中的先前点接近该点时的切线。
      * @param {Number} value 值。
      */
-    set TangentIn(value: Number): null
+    set TangentIn(value: Number): void
 
     /**
      * 获取介绍曲线中离开该点向下一点靠近时的切线。
@@ -99,7 +99,7 @@ class CurveKey extends Object {
      * 设置介绍曲线中离开该点向下一点靠近时的切线。
      * @param {Number} value 值。
      */
-    set TangentOut(value: Number): null
+    set TangentOut(value: Number): void
 
     /**
      * 创建 CurveKey 的副本。

@@ -243,7 +243,7 @@ class TypeList extends Object {
     }
     
     Serialize(...args) {
-        let superSerialize = super.Serialize;
+        const superSerialize = super.Serialize;
         return (
             TypeList.prototype.Serialize = Overload.Create().
                 Add([String], function () {

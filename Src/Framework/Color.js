@@ -756,7 +756,7 @@ class Color extends Object {
     }
 
     Serialize(...args) {
-        let superSerialize = super.Serialize;
+        const superSerialize = super.Serialize;
         return (
             Color.prototype.Serialize = Overload.Create().
                 Add([String], function () {

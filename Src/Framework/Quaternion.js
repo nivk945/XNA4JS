@@ -481,7 +481,7 @@ class Quaternion extends Object {
     }
     
     Serialize(...args) {
-        let superSerialize = super.Serialize;
+        const superSerialize = super.Serialize;
         return (
             Quaternion.prototype.Serialize = Overload.Create().
                 Add([String], function () {

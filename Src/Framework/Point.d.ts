@@ -33,7 +33,7 @@ class Point extends Object {
      * 设置指定 Point 的 x 方向坐标。
      * @param {Number} value 值。
      */
-    set X(value: Number): null
+    set X(value: Number): void
 
     /**
      * 获取指定 Point 的 y 方向坐标。
@@ -45,7 +45,7 @@ class Point extends Object {
      * 设置指定 Point 的 y 方向坐标。
      * @param {Number} value 值。
      */
-    set Y(value: Number): null
+    set Y(value: Number): void
 
     /**
      * 返回点 (0,0)。

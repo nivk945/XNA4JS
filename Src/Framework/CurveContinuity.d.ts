@@ -1,4 +1,4 @@
-﻿import Enum from "../Core/Enum.js";
+﻿import Enum from '../Core/Enum.js';
 
 /**
  * 定义 Curve 上 CurveKeys 的连续性。

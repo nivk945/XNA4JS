@@ -38,7 +38,7 @@ class BoundingSphere extends Object {
      * 设置球体的中心点。
      * @param {Vector3} value 值。
      */
-    set Center(value: Vector3): null
+    set Center(value: Vector3): void
 
     /**
      * 获取球形半径。
@@ -50,7 +50,7 @@ class BoundingSphere extends Object {
      * 设置球形半径。
      * @param {Number} value 值。
      */
-    set Radius(value: Number): null
+    set Radius(value: Number): void
 
     /**
      * 检查当前 BoundingSphere 中是否包含指定的 BoundingSphere。

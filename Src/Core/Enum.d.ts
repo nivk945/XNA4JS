@@ -1,4 +1,4 @@
-﻿import Object from "../Core/Object.js";
+﻿import Object from '../Core/Object.js';
 
 /**
  * 为枚举提供基类。

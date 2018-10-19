@@ -518,7 +518,7 @@ class Vector4 extends Object {
     }
     
     Serialize(...args) {
-        let superSerialize = super.Serialize;
+        const superSerialize = super.Serialize;
         return (
             Vector4.prototype.Serialize = Overload.Create().
                 Add([String], function () {

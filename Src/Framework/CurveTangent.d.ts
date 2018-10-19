@@ -1,4 +1,4 @@
-﻿import Enum from "../Core/Enum.js";
+﻿import Enum from '../Core/Enum.js';
 
 /**
  * 指定要为 Curve 中的 CurveKey 点计算的不同切线类型。

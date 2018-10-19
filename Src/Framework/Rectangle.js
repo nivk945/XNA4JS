@@ -231,7 +231,7 @@ class Rectangle extends Object {
     }
     
     Serialize(...args) {
-        let superSerialize = super.Serialize;
+        const superSerialize = super.Serialize;
         return (
             Rectangle.prototype.Serialize = Overload.Create().
                 Add([String], function () {

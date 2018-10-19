@@ -35,17 +35,17 @@ class CurveKeyCollection extends TypeList {
      * 向数组末尾追加一个元素。
      * @param {CurveKey} item 要追加的元素。
      */
-    Add(item: CurveKey): null
+    Add(item: CurveKey): void
 
     /**
      * 从 CurveKeyCollection 中移除所有 CurveKeys。
      */
-    Clear(): null
+    Clear(): void
 
     /**
      * 创建 CurveKeyCollection 的副本。
      */
-    Clone(): null
+    Clone(): void
 
     /**
      * 确定 CurveKeyCollection 中是否包含指定的 CurveKey。
@@ -59,7 +59,7 @@ class CurveKeyCollection extends TypeList {
      * @param {TypeList<CurveKey>} array 复制自 CurveKeyCollection 的 CurveKeys 目标。数组必须具有基于零的索引。
      * @param {Number} arrayIndex 复制自 CurveKeyCollection 的 CurveKeys 目标。数组必须具有基于零的索引。
      */
-    CopyTo(array: TypeList<CurveKey>, arrayIndex: Number): null
+    CopyTo(array: TypeList<CurveKey>, arrayIndex: Number): void
 
     /**
      * 返回可循环访问 CurveKeyCollection 的枚举器。
@@ -85,7 +85,7 @@ class CurveKeyCollection extends TypeList {
      * 移除位于指定索引的 CurveKey。
      * @param {Number} index 要删除的基于零的项索引。
      */
-    RemoveAt(index: Number): null
+    RemoveAt(index: Number): void
 
     /**
      * 获取当前实例的类型。

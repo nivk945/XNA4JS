@@ -120,7 +120,7 @@ class CurveKey extends Object {
     }
 
     Serialize(...args) {
-        let superSerialize = super.Serialize;
+        const superSerialize = super.Serialize;
         return (
             CurveKey.prototype.Serialize = Overload.Create().
                 Add([String], function () {

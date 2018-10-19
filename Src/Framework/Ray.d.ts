@@ -41,7 +41,7 @@ class Ray extends Object {
      * 设置指定 Ray 所指方向的单位矢量。
      * @param {Vector3} value 值。
      */
-    set Direction(value: Vector3): null
+    set Direction(value: Vector3): void
 
     /**
      * 获取指定 Ray 的起点。
@@ -53,7 +53,7 @@ class Ray extends Object {
      * 设置指定 Ray 的起点。
      * @param {Vector3} value 值。
      */
-    set Position(value: Vector3): null
+    set Position(value: Vector3): void
 
     /**
      * 确定指定的 Ray 是否等于当前 Ray。

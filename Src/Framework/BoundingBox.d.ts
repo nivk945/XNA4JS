@@ -39,7 +39,7 @@ class BoundingBox extends Object {
      * 设置 BoundingBox 包含的最少点。
      * @param {Vector3} value 值。
      */
-    set Min(value: Vector3): null
+    set Min(value: Vector3): void
 
     /**
      * 获取 BoundingBox 包含的最多点。
@@ -51,7 +51,7 @@ class BoundingBox extends Object {
      * 设置 BoundingBox 包含的最多点。
      * @param {Vector3} value 值。
      */
-    set Max(value: Vector3): null
+    set Max(value: Vector3): void
 
     /**
      * 指定 BoundingBox 中的角点总数 (8)。
@@ -130,7 +130,7 @@ class BoundingBox extends Object {
      * 获取组成 BoundingBox 角点的数据点数组。
      * @param {TypeList<Vector3>} corners 至少具备 8 个 Vector3 数据点的现有数组，此数组可以用来写入 BoundingBox 角点。
      */
-    GetCorners(corners: TypeList<Vector3>): null
+    GetCorners(corners: TypeList<Vector3>): void
     
     /**
      * 获取当前实例的类型。

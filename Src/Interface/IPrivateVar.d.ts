@@ -23,7 +23,7 @@ class IPrivateVar {
      * @protected
      * @param {object} settings 设置对象
      */
-    _createProxy(settings: object): null
+    _createProxy(settings: object): void
 
     /**
      * 设置内部变量
@@ -31,7 +31,7 @@ class IPrivateVar {
      * @param {String} key 键
      * @param {any} value 值
      */
-    _setPrivateVar(key: String, value: any): null
+    _setPrivateVar(key: String, value: any): void
 
     /**
      * 获取内部变量

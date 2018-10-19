@@ -1,5 +1,5 @@
-﻿import Object from "../Core/Object.js";
-import Overload from "./Overload.js";
+﻿import Object from '../Core/Object.js';
+import Overload from './Overload.js';
 
 const enums = new Map();
 
@@ -40,7 +40,7 @@ class Enum extends Object {
     }
 
     Serialize(...args) {
-        let superSerialize = super.Serialize;
+        const superSerialize = super.Serialize;
         return (
             Enum.prototype.Serialize = Overload.Create().
                 Add([String], function () {

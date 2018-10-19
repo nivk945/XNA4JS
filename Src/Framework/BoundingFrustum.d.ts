@@ -31,7 +31,7 @@ class BoundingFrustum extends Object {
      * 设置描述此边界视锥的 Matrix。
      * @param {Matrix} value 值。
      */
-    set Matrix(value: Matrix): null
+    set Matrix(value: Matrix): void
 
     /**
      * [非XNA4.0标准]指定 BoundingFrustum 中的 Plane 总数 (6)。
@@ -128,7 +128,7 @@ class BoundingFrustum extends Object {
      * 获取组成 BoundingFrustum 角点的数据点数组。
      * @param {Array<Vector3>} corners 至少具备 8 个 Vector3 数据点的现有数组，此数组可以用来写入 BoundingFrustum 角点。
      */
-    GetCorners(corners: Array<Vector3>): null
+    GetCorners(corners: Array<Vector3>): void
     
     /**
      * 获取当前实例的类型。
